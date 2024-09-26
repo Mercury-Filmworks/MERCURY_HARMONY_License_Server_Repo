@@ -2,7 +2,7 @@
 $machineListFile = "C:\Users\iand\Documents\GitHub\MERCURY_Harmony_License_Server\machine_list.csv"
 
 # The file to look for on each machine
-#$filePath = "C:\folder\file.dat"
+
 # The line to search for and the replacement text
 $searchText = "hermes"
 $replaceText = "hermes2"

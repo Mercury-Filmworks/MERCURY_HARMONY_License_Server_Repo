@@ -10,7 +10,7 @@ hostsloc="/etc/hosts"
 if grep -q "hermes2" "$hostsloc"; then
     echo "hermes2 exists in hosts file, nothing to do here."
 else
-    echo "10.10.10.94   hermes2     hermes2.mercury.local.com" >> "$hostsloc":
+    echo "10.10.10.94   hermes2     hermes2.mercury.local.com" >> "$hostsloc"
     echo "Added hermes2 to host file."
 fi
 

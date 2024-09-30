@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the location of the flexlm file
-flexlmloc="/usr/local/flexlm/license/license.dat"
+flexlmloc="/usr/local/flexlm/licenses/license.dat"
 
 # Check if license file exist in the machine
 if [[ ! -f $flexlmloc ]]; then
@@ -16,6 +16,10 @@ if grep -q "hermes2" "$flexlmloc"; then # if hermes2 already exist then close th
 fi
 
 if grep -q "hermes" "$flexlmloc"; then # if hermes exist replace with hermes2
+    echo "Backing up license file... "
+    datenow=$(date +"%Y%m%d.%H%M")
+    cp -v "$flexlmloc" "$flexlmloc.Backup.$datenow"
+
     echo "Replacing hermes to hermes2..."
     
     # Use sed to replace hermes to hermes2 in the flexlm file.

@@ -7,7 +7,7 @@ flexlmloc="/usr/local/flexlm/licenses/license.dat"
 hostsloc="/etc/hosts"
 
 # Adding hermes2 entry on file
-if grep -q "hermes2" "$hostloc"; then
+if grep -q "hermes2" "$hostsloc"; then
     echo "hermes2 exists in hosts file, nothing to do here."
 else
     echo "10.10.10.94   hermes2     hermes2.mercury.local.com" >> "$hostsloc":

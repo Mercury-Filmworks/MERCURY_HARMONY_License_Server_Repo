@@ -1,30 +1,26 @@
 #!/bin/bash
 
-# Set the file path
-machinelist=""
-# Set variable for Nabu
-nabuloc=""
+# Set the location of the flexlm file
+flexlmloc="/usr/local/flexlm/license/license.dat"
 
-if [[ -d "/mnt/Nabu/" ]]; then
-    nabuloc="/mnt/Nabu/"
-elif [[ -d "/mnt/nabu/" ]]; then
-    nabuloc="/mnt/nabu"
+# Check if license file exist in the machine
+if [[ ! -f $flexlmloc ]]; then
+    echo "License file doesn't exist!"
+    exit 0
+fi
+
+# Reading the license file and check if Hermes exists
+if grep -q "hermes2" "$flexlmloc"; then # if hermes2 already exist then close the script
+    echo "hermes2 is already set nothing to do here!"
+    exit 0
+fi
+
+if grep -q "hermes" "$flexlmloc"; then # if hermes exist replace with hermes2
+    echo "Replacing hermes to hermes2..."
+    
+    # Use sed to replace hermes to hermes2 in the flexlm file.
+    sed -i 's/hermes/hermes2/g' "$flexlmloc"
+    echo "Replacement done!"
 else
-    echo "Nabu mount needed"
-    exit 0
+    echo "hermes doesnt exist in the file."
 fi
-
-# Setting machine list
-$machinelist="$nabuloc/toonboom/ToonBoom_Linux/lnx_script_lib/machine_list.csv"
-
-# Check if machine list exists
-if [[ ! -f $machinelist ]]; then
-    echo "Machine list doesn't exist."
-    exit 0
-fi
-
-echo "Nabu mount found in $nabuloc"
-# Check if the machine list file exists
-# Loop through machine list
-
-# Check if the flex file exist and read if hermes is available

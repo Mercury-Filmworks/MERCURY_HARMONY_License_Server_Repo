@@ -3,6 +3,17 @@
 # Set the location of the flexlm file
 flexlmloc="/usr/local/flexlm/licenses/license.dat"
 
+# Set hosts with hermes2
+hostsloc="/etc/hosts"
+
+# Adding hermes2 entry on file
+if grep -q "hermes2" "$hostloc"; then
+    echo "hermes2 exists in hosts file, nothing to do here."
+else
+    echo "10.10.10.94   hermes2     hermes2.mercury.local.com" >> "$hostloc"
+    echo "Added hermes2 to host file."
+fi
+
 # Check if license file exist in the machine
 if [[ ! -f $flexlmloc ]]; then
     echo "License file doesn't exist!"

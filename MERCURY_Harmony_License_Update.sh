@@ -14,6 +14,15 @@ else
     exit 0
 fi
 
+# Setting machine list
+$machinelist="$nabuloc/toonboom/ToonBoom_Linux/lnx_script_lib/machine_list.csv"
+
+# Check if machine list exists
+if [[ ! -f $machinelist ]]; then
+    echo "Machine list doesn't exist."
+    exit 0
+fi
+
 echo "Nabu mount found in $nabuloc"
 # Check if the machine list file exists
 # Loop through machine list
